@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./display-quote.scss";
 
 export default function DisplayQuote() {
   const [quote, setQuote] = useState({ text: "", author: "" });
@@ -22,9 +23,9 @@ export default function DisplayQuote() {
     setQuote({ text, author });
   };
   return (
-    <div>
-      <div>{quote.text}</div>
-      <div>{quote.author}</div>
+    <div className="quote-wrapper">
+      <div className="quote-text">{quote.text}</div>
+      <div className="quote-author">{quote.author}</div>
     </div>
   );
 }

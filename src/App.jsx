@@ -5,8 +5,11 @@ import DisplayName from "./components/displayname/DisplayName";
 import DisplayQuote from "./components/displayQuote/DisplayQuote";
 import DisplayWeather from "./components/displayweather/DisplayWeather";
 import Settings from "./components/settings/Settings";
+import dotenv from "dotenv";
+dotenv.config();
 
 function App() {
+  console.log(process.env.REACT_APP_SEKRET);
   const [userInfo, setUserInfo] = useState("John Doe");
   return (
     <div className="App">
