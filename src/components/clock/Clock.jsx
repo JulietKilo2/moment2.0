@@ -26,11 +26,11 @@ export default function Clock() {
 
   return (
     <div>
-      <h1>
+      <div>
         {`${localTime.hour > 10 ? localTime.hour : "0" + localTime.hour}:${
           localTime.minute > 10 ? localTime.minute : "0" + localTime.minute
         }:${localTime.second > 10 ? localTime.second : "0" + localTime.second}`}
-      </h1>
+      </div>
     </div>
   );
 }

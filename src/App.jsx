@@ -10,11 +10,23 @@ function App() {
   const [userInfo, setUserInfo] = useState("John Doe");
   return (
     <div className="App">
-      <Clock />
-      <DisplayName userInfo={userInfo} />
-      <DisplayWeather />
-      <DisplayQuote />
-      <Settings />
+      <div className="container">
+        <div className="weather-container">
+          <DisplayWeather />
+        </div>
+        <div className="clock-container">
+          <Clock />
+        </div>
+        <div className="userinfo-container">
+          <DisplayName userInfo={userInfo} />
+        </div>
+        <div className="quote-container">
+          <DisplayQuote />
+        </div>
+        <div className="settings-container">
+          <Settings />
+        </div>
+      </div>
     </div>
   );
 }

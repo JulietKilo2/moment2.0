@@ -23,8 +23,8 @@ export default function DisplayQuote() {
   };
   return (
     <div>
-      <h1>{quote.text}</h1>
-      <h2>{quote.author}</h2>
+      <div>{quote.text}</div>
+      <div>{quote.author}</div>
     </div>
   );
 }

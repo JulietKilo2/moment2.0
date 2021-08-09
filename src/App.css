@@ -2,3 +2,37 @@
   box-sizing: border-box;
   margin: 0;
 }
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weather-container {
+  position: absolute;
+  right: 0;
+}
+
+.clock-container {
+  position: relative;
+  top: 42.5vh;
+}
+
+.userinfo-container {
+  position: relative;
+  top: 45vh;
+}
+
+.quote-container {
+  position: absolute;
+  bottom: 2vh;
+}
+
+.settings-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
