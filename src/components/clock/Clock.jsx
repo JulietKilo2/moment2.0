@@ -29,8 +29,8 @@ export default function Clock() {
   return (
     <div>
       <div className="time">
-        {`${localTime.hour > 10 ? localTime.hour : "0" + localTime.hour}:${
-          localTime.minute > 10 ? localTime.minute : "0" + localTime.minute
+        {`${localTime.hour > 9 ? localTime.hour : "0" + localTime.hour}:${
+          localTime.minute > 9 ? localTime.minute : "0" + localTime.minute
         }`}
       </div>
     </div>

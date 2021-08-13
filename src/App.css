@@ -15,6 +15,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: whitesmoke;
+  background-position: center;
+  background-size: cover;
 }
 
 .weather-container {
