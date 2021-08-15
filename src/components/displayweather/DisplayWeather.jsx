@@ -1,7 +1,7 @@
 import React from "react";
 import "./display-weather.scss";
 
-export default function DisplayWeather({ weatherInfo, userLocation }) {
+export default function DisplayWeather({ weatherInfo }) {
   return (
     <div className="weather-container">
       <div className="location">

@@ -10,24 +10,15 @@ dotenv.config();
 
 function App() {
   const [userInfo, setUserInfo] = useState("John Doe");
-  const [geolocation, setGeolocation] = useState("");
   const [weatherInfo, setWeatherInfo] = useState("");
   const [photoUrl, setPhotoUrl] = useState(null);
 
   useEffect(() => {
-    // Get user geolocation data for weather api
-    navigator.geolocation.getCurrentPosition(success, error);
-  }, []);
-
-  useEffect(() => {
     const apiKey = process.env.REACT_APP_PHOTO_API_KEY;
-
     // Get a random number (for random page & id of pic)
     const rand = Math.floor(Math.random() * 10);
-
     // Url for request
     const url = `https://api.unsplash.com/search/photos?page=${rand}&query=nature&client_id=${apiKey}`;
-
     // Send network request
     fetch(url)
       .then((data) => data.json())
@@ -35,27 +26,33 @@ function App() {
   }, []);
 
   useEffect(() => {
+    // Get user geolocation
+    const getGeolocation = () => {
+      return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+      });
+    };
+
+    getGeolocation()
+      .then((success) => {
+        // Transfer user geolocation info to getWeather function
+        getWeather(success.coords.latitude, success.coords.longitude);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const getWeather = (lat, lon) => {
     // Get weather data based on user geolocation
     const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
-    const { lat, long } = geolocation;
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
     fetch(url)
       .then((response) => response.json())
       .then((data) =>
         setWeatherInfo({ temp: data.main.temp, location: data.name })
       )
       .catch((error) => console.log(error));
-  }, [geolocation]);
-
-  const success = (response) => {
-    const lat = response.coords.latitude;
-    const long = response.coords.longitude;
-    setGeolocation({ lat: lat, long: long });
-    console.log(geolocation);
-  };
-
-  const error = (response) => {
-    console.log(response.message);
   };
 
   return (
